@@ -32,9 +32,15 @@ require 'sinatra'
  post '/' do
    @name = params[:user_name]
    @age  = params[:user_age].to_i
+   @gender = params[:user_geder]
+   @day = params[:day]
 
-   if @age >= 18
+   if @age >= 18 && @day !(Tuesday)
      erb :drink
+     if @age >= 18 && @day == Tuesday && @gender == male
+      erb:male_no_drink
+      if @age >= 18 && @day == Tuesday && @gender == female
+        erb:ladies_night 
    else
      erb :no_drink
    end
